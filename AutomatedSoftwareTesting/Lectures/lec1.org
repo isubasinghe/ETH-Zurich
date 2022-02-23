@@ -1,0 +1,8 @@
+#+TITLE: Lecture 1
+* Software peculiarities
+** A lot of different, often conflicting, changing quality requirements
+** Bugs are not evenly distributed
+** Software is consistently evolving
+** Structure may deteriorate due to changes
+** Software is inherently "nonlinear"
+- A procedure working correctly for input 1,10 may fail for input 5

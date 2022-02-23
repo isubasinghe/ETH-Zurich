@@ -1,0 +1,13 @@
+#+TITLE: Lecture 1
+* Expression evaluation
+** In mathematics e.g. f(x,y) = x - y. Compute f(5,7) by substituting 5 and 7.
+** Same applies for Haskell:
+*** gcd 10 15 = gcd 10 (15-10) case 3 otherwise
+***           = gcd 10 5
+* Evaluation strategeties
+** Eager evaluation: evaluate arguments first
+*** Also called "call by value"
+*** Corresponds to left path in picture
+** Lazy evaluation: evaluate arguments only when needed (Haskell)
+*** Also called "call-by-need" or "left-most/outermost"
+*** Certain functions force evaluation, e.g. arithmetic.

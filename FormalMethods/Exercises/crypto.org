@@ -1,0 +1,44 @@
+#+TITLE: Crypto
+#+AUTHOR: Isitha Subasinghe
+* Motivation
+#+begin_src artist
+
+                         Charlie
+                           /|\
+                            |
+                            |
+                          --+--
+                         /     \
+                        /       \
+                       /         \
++------------+        /           \       +-------------+
+|            |        |           |       |             |
+|   Alice    |  <---> |           | <---> |     Bob     |
+|            |        |           |       |             |
++------------+        \           /       +-------------+
+                       \         /
+                        \       /
+                         \     /
+                          -----
+#+end_src
+
+- Can charlie combine the crypto messages he sees in some clever way to get to the secrets?
+- Alternatively: what messages can he derive from the messages to see.
+- We would like to reason about this **formally**!
+
+* Crypto Messages
+Let a set **A** of atomic messages be given. $\mathcal{L}_M$, the language of messages, is the smallest set where:
+- $M \in \mathcal{L}_M$ | if $M \in \textbf{A}$
+- $\langle \text{A}\text{,}\text{B}\rangle \in \mathcal{L}_M$ | if $\text{A}\text{,}\text{B} \in \mathcal{L}_M$
+- $\{M\}_k \in \mathcal{L}_M$ | if $\text{M}\text{,}\text{K} \in \mathcal{L}_M$
+
+* Message Derivations
+For a sequence of messages $M_1$,...,$M_k$ (the order does not matter), we call $M_1$,...,$M_k \vdash M$ a sequent. Informally, this corresponds to the assertion:
+M can be **derived from** the messages $M_1$,...,$M_k$.
+
+** Derivation rules:
+
+
+* Hilbert System or Hilbert Calculus
+
+* Sequent Calculus
