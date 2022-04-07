@@ -1,0 +1,69 @@
+#+TITLE:Exercise Sheet 1
+#+AUTHOR: Isitha Subasinghe
+* Evaluation strategies
+*** Complete the evaluation steps for `fibLouis 4'.
+#+BEGIN_SRC haskell
+fibLouis :: Int -> Int
+fibLouis 0 = 0
+fibLouis 1 = 1
+fibLouis n = fibLouis (n-1) + fibLouis (n -2)
+fibLouis 4 =
+    (fibLouis (4-1) + fibLouis (4-2)) =
+    (fibLouis 3 + (fibLouis (4-2)) =
+    (fibLouis 3 + fibLouis 2) =
+    (((fibLouis (3-1) + fibLouis (3-2))
+        + (fibLouis (2-1) + fibLouis (2-2))) =
+     ...
+     ((fibLouis 2 + fibLouis 1)  + (fibLouis 1 + fibLouis 0)) =
+     ((fibLouis (2-1) + fibLouis (2-2)) + fibLouis 1) + (fibLouis 1 + fibLouis 0) =
+     ((fibLouis 1 + fibLouis 0) + fibLouis 1) + (fibLouis 1 + fibLouis 0) =
+     ((1 + 0) + 1) + (1 + 0) =
+     (1 + 1) + 1 =
+     2 + 1 =
+     3
+#+END_SRC
+
+** Complete the evaluations for `fibEva 4'.
+#+BEGIN_SRC haskell
+fibEva :: Int -> Int
+fibEva n = fst (aux n)
+           where
+             aux 0 = (0,1)
+             aux n = next (aux (n - 1))
+             next (a,b) = (b, a + b)
+fibEva 4 =
+  fst (aux 4) =
+  fst (next (aux (4 - 1))) =
+  fst (next (aux 3)) =
+  fst (next (next (aux (3 - 1)))) =
+  fst (next (next (aux 2))) =
+  fst (next (next (next (aux (2 - 1))))) =
+  fst (next (next (next (aux 1)))) =
+  fst (next (next (next (next (aux (1-1)))))) =
+  fst (next (next (next (next (aux 0))))) =
+  fst (next (next (next (next (0,1))))) =
+  fst (next (next (next (1, 0 + 1)))) =
+  fst (next (next (next (1, 1)))) =
+  fst (next (next (1, 1 + 1))) =
+  fst (next (next (1, 2))) =
+  fst (next (2, 1 + 2)) =
+  fst (next (2, 3)) =
+  fst (3, 2+3) =
+  fst (3, 5) =
+  3
+
+#+END_SRC
+* Natural Deduction
+** Paranethesize the following formulas.
+a) $\text{A} \vee \text{B} \rightarrow \text{C} \rightarrow \text{A} \wedge \text{C} \vee \text{B} \wedge \text{C}$
+
+   $(\text{A} \vee \text{B}) \rightarrow (\text{C} \rightarrow ((\text{A} \wedge \text{C}) \vee (\text{B} \wedge \text{C})))$
+
+b) $(\text{A} \rightarrow \text{B} \rightarrow \text{C}) \rightarrow \text{A} \wedge \text{B} \rightarrow \text{C}$
+
+   $((\text{A} \rightarrow (\text{B} \rightarrow \text{C})))$
+
+** Prove that the formulas above are tautologies in intuitionistic logic using natural deduction.
+a) $(\text{A} \vee \text{B}) \rightarrow (\text{C} \rightarrow ((\text{A} \wedge \text{C}) \vee (\text{B} \wedge \text{C})))$
+** We define
+* Headache of the week

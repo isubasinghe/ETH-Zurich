@@ -1,0 +1,76 @@
+#+TITLE: Lec2
+* Mutation Testing
+- A mutant m for program P is killed by test t iff P(t) != m(t)
+- With well designed mutation operators, mutation testing is powerful
+- Different operators need to be designed for different goals.
+- Tests can be kept added until all mutants are killed:
+  - Dead mutant: A test case has killed it
+  - Trivial mutant: Almost every test can kill it
+  - Equivalent mutant: No test can kill it (equivalent to the original program)
+  - Stubborn mutant: Almost no test case can kill it
+** Why mutationt testing?
+- Goal to asses how thorough a test suite is:
+  Mutation score = | killed mutants | / | mutants |
+- Key assumption:
+  If the program has a bug, there is a set of mutants that can only be killed by a test case that also detects the bug.
+  Also known as "Coupling Effect".
+** Mutation coverage criteria
+*** The RIP model
+**** Reachability: The test causes mutated statement to be reached
+**** Infection: The test causes mutated statement to an incorrect state.
+**** Propagation: The incorrect state propagates to incorrect output.
+** Strong vs Weakly killing mutants
+*** Strongly killing mutants
+Given mutant m, program P, test t, **strongly kill** m **iff** P(t) != m(t)
+*** Weakly killing mutants
+Given mutant m modifying location l in program P and test t, t weakly kills m **iff** the **state**
+of running P on t is different from the state of running m on t immediately after l.
+- Weakly killing satisfies Reachability and Infection but not propagation.
+** Designing mutation operators
+- At the method level, mutation operators for different languages are similar
+- Mutation operators do one of two things
+  - Mimic typical programmer mistakes
+  - Encourage common test heuristics
+- Design many operators and experimentally select the most useful
+** Mutation operators
+1. ABS: Asbolute Value Insertion
+   Each arithmetic expression is modified by the functions abs(), negAbs() and failOnZero()
+2. AOR: Arithmetic Operator Replacement
+   Each occurence of arithmetic operators +.-,*,/ and % is replaced by each of the other operators.
+   In addition, each is replaced by the special mutation operators leftOp and rightOp.
+3. ROR: Relational Operator Replacement
+   Each occurrence of one of the relational replacement operators is replaced by each of the other operators and by falseOp and trueOp.
+4. COR: Conditional Operator Replacement
+   Each occurrence of one of the logical operators is replaced by another logical operator.
+5. SOR: Shift Replacement Operator
+   Each occurence of one of the shift operators is replaced by another shift operator. << with >> and >> with << for example.
+6. LOR: Logical Operator Replacement
+   Each occurence of the logical operators is replaced by leftOp and rightOp.
+7. ASR: Assignment Operator Replacement
+   Each occurence of one of the assignment operators is replaced by another assignment operator.
+8. UOI: Unary Operation Insertion
+   Each unary operator is isnerted in front of each expression of the correct type.
+9. UOD: Unary Operation Deletion
+   Each unary operator is deleted.
+10. SVR: Scalar Variable Replacement
+    Each variable refernce is replaced by every other variable of the appropriate type.
+11. BSR: Bomb Statement Replacement
+    Each statement is replaced by a special Bomb() function
+** Subsumption of Other Criteria
+*** Mutation is widely considered the strongest test criterion
+- And most expensive
+- By far the most test requirements (each mutant)
+- Not always the most tests
+*** Mutation subsumes other criteria by including specific mutation operators
+
+* Metamorphic testing
+- **Test Oracle**: A function or mechanism to check whether a test execution succeeds or fails
+* Combinatorial Testing
+Motivation:
+ - Behaviour of a system may be affected by many factors
+   - Input parameters
+   - Environment configurations
+ - Techniques can be used to identify the possible values of each factor
+   - Equivalence partitioning
+   - Boundary-value analysis
+ - Impractical to test all combinations of values

@@ -42,3 +42,4 @@ M can be **derived from** the messages $M_1$,...,$M_k$.
 * Hilbert System or Hilbert Calculus
 
 * Sequent Calculus
+- The sequent calculus Lcp = Axioms + Logical Rules + Structural Rules
